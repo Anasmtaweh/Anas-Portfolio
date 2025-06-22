@@ -12,6 +12,6 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
+    "express": "^5.1.0"
   }
 }
