@@ -42,10 +42,13 @@ app.post('/submit-contact-form', async (req, res) => {
         // }
     });
 
+    // Sanitize user input to prevent header injection
+    const sanitizedName = name.replace(/["<>]/g, '');
+
     const mailOptions = {
-        from: `"${name}" <${process.env.EMAIL_USER}>`, // Sender address (can be your email if provider restricts 'from')
+        from: `"${sanitizedName}" <${process.env.EMAIL_USER}>`, // Sender address (can be your email if provider restricts 'from')
         replyTo: email, // Set the reply-to to the user's email
-        to: process.env.YOUR_RECEIVING_EMAIL,      // List of receivers (your email from .env)
+        to: process.env.YOUR_RECEIVING_EMAIL, // List of receivers (your email from .env)
         subject: `Portfolio Inquiry: ${inquiryType} from ${name}`, // Subject line
         text: `You have a new inquiry from your portfolio website:
         
@@ -66,17 +69,26 @@ ${message}`, // Plain text body
 
     try {
         // Log the environment variables being used (for debugging only, remove in production)
-        console.log('Attempting to send email with:');
-        console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'Set' : 'NOT SET');
-        console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'Set' : 'NOT SET');
-        console.log('YOUR_RECEIVING_EMAIL:', process.env.YOUR_RECEIVING_EMAIL ? 'Set' : 'NOT SET');
+        console.log('--- Attempting to send email ---');
+        console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'Set' : 'NOT SET or empty');
+        console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'Set' : 'NOT SET or empty');
+        console.log('YOUR_RECEIVING_EMAIL:', process.env.YOUR_RECEIVING_EMAIL ? 'Set' : 'NOT SET or empty');
 
         await transporter.sendMail(mailOptions);
         console.log('Email sent successfully to:', process.env.YOUR_RECEIVING_EMAIL);
         res.status(200).json({ success: true, message: 'Message sent successfully! Thank you.' });
     } catch (error) {
-        console.error('Error sending email:', error.message);
-        console.error('Nodemailer error details:', error); // Log full error object for more details
+        console.error('--- NODEMAILER ERROR ---');
+        console.error('Error Code:', error.code);
+        console.error('Error Message:', error.message);
+        console.error('Full Error Object:', error);
+        console.error('--- END NODEMAILER ERROR ---');
+
+        // Check for authentication-specific errors
+        if (error.code === 'EAUTH' || (error.responseCode && error.responseCode === 535)) {
+            console.error('Authentication failed. This is the most common error. Please double-check your EMAIL_USER and EMAIL_PASS environment variables on Render. If you use Two-Factor Authentication (2FA) on your Outlook account, you MUST generate and use an App Password.');
+        }
+
         // Provide a more generic error to the client for security
         res.status(500).json({ success: false, error: 'Failed to send message. Please try again later or contact me directly.' });
     }
