@@ -29,6 +29,7 @@ app.post('/submit-contact-form', async (req, res) => {
     // For production, consider dedicated email services like SendGrid, Mailgun, or AWS SES
     // if they offer better reliability or features for your needs.
     const transporter = nodemailer.createTransport({
+        secure: false, // Use STARTTLS on port 587
         pool: true, // Use a connection pool for better performance on repeated sends
         service: 'hotmail',
         auth: {
