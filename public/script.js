@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // IMPORTANT: Replace with your actual Formspree endpoint URL
-                const formspreeEndpoint = 'https://formspree.io/f/xxxxxxxx';
+                const formspreeEndpoint = 'YOUR_ACTUAL_FORMSPREE_ENDPOINT_HERE'; // <--- REPLACE THIS LINE
 
                 const response = await fetch(formspreeEndpoint, {
                     method: 'POST',
