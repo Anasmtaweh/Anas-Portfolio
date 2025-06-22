@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anas Mtaweh - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Anas Mtaweh </h1>
+        <p>Full Stack Developer</p>
+    </header>
+
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#cv">CV</a>
+        <a href="#projects">Projects</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi, I’m Anas Mtaweh, a self-driven Computer Science student passionate about building impactful web applications and embracing DevOps practices.</p>
+            <p>I design and deploy full-stack solutions using Node.js, React, MongoDB, and Docker, with cloud deployments on AWS EC2/S3. I enjoy solving real problems with clean, efficient systems — from backend APIs to secure, scalable infrastructure.</p>
+            
+            <h3>🚀 Notable projects:</h3>
+            <ul>
+                <li><strong>Mishtika</strong> – an AI-powered pet care platform with scheduling, authentication, and full CI/CD deployment</li>
+                <li><strong>ATM Simulation</strong> – Java-based desktop application with a secure transaction flow</li>
+                <li><strong>Travel Booking App</strong> – Dynamic web platform using PHP and Bootstrap</li>
+            </ul>
+
+            <p>Let’s connect if you’re looking for a reliable developer who brings code quality, DevOps thinking, and continuous learning to the table.</p>
+        </section>
+
+        <section id="cv">
+            <h2>CV</h2>
+            <p>
+                You can download my full CV here:
+                <a href="Anas_Mtaweh.pdf" download="Anas_Mtaweh_CV.pdf" class="button">Download CV (PDF)</a>
+            </p>
+            <!-- 
+                Ensure your CV file is named "Anas_Mtaweh.pdf" 
+                and is placed directly inside the "public" folder:
+                Anas_Mtaweh.pdf
+            -->
+            <!-- Optionally, list key skills or experience highlights directly here -->
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project">
+                <h3>Mishtika - Pet Care Platform</h3>
+                <p>A comprehensive pet care platform designed to connect pet owners with services and information. Key features include AI chat for pet-related queries, appointment scheduling, and secure user authentication. My role involved full-stack development, from designing the backend API and database schema to building the frontend interface and deploying the application to AWS.</p>
+                <p><strong>Technologies:</strong> Node.js, Express.js, React, MongoDB, AWS (EC2, S3), Docker, Nginx, Let's Encrypt, AI OpenAI API.</p>
+                <p><em>Note: The live demo is hosted on Render's free tier and may take a moment to load on the first visit.</em></p>
+                <p>
+                    <a href="https://mishtika-app.onrender.com" target="_blank" rel="noopener noreferrer">Live Demo</a> |
+                    <a href="https://github.com/Anasmtaweh/pet-ai-project#" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                </p>
+                <!-- Add screenshots or a small GIF if possible -->
+            </div>
+            
+            <!-- Add your next project here -->
+            <!--
+            <div class="project">
+                <h3>[Your Next Project Title]</h3>
+                <p>[Description of your project. What problem does it solve? What was your role? Key features.]</p>
+                <p><strong>Technologies:</strong> [List technologies used]</p>
+                <p>
+                    <a href="[LIVE_DEMO_LINK]" target="_blank" rel="noopener noreferrer">Live Demo</a> |
+                    <a href="[SOURCE_CODE_LINK]" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                </p>
+            </div>
+            -->
+        </section>
+
+        <section id="links">
+            <h2>Find Me Online</h2>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <!-- Add other relevant links: Blog, Twitter, Stack Overflow, etc. -->
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Get in Touch</h2>
+            <form id="contactForm">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="inquiryType">I'm interested in:</label>
+                    <select id="inquiryType" name="inquiryType" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="Job Opportunity">Job Opportunity</option>
+                        <option value="Freelance Work">Freelance Work</option>
+                        <option value="Temporary Help/Consultation">Temporary Help/Consultation</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="form-status"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Anas Mtaweh. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
