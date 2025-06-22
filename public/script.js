@@ -3,12 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const formStatus = document.getElementById('form-status');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async function(event) {
-            event.preventDefault();
-            formStatus.textContent = 'Sending...';
-            formStatus.className = ''; // Reset classes
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
 
-            const formData = new FormData(this);
+            formStatus.textContent = 'Sending message...';
+            formStatus.style.color = '#007bff'; // Blue for sending
+
+            const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
 
             try {
@@ -22,23 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const result = await response.json();
 
-                if (response.ok && result.success) {
-                    formStatus.textContent = result.message || 'Message sent successfully!';
-                    formStatus.classList.add('success');
-                    this.reset(); // Clear the form
+                if (response.ok) {
+                    formStatus.textContent = result.message;
+                    formStatus.style.color = 'green';
+                    contactForm.reset(); // Clear the form on success
                 } else {
-                    formStatus.textContent = result.error || 'Failed to send message. Please try again.';
-                    formStatus.classList.add('error');
+                    formStatus.textContent = result.error || 'An unexpected error occurred.';
+                    formStatus.style.color = 'red';
                 }
             } catch (error) {
-                console.error('Form submission error:', error);
-                formStatus.textContent = 'An error occurred. Please try again later.';
-                formStatus.classList.add('error');
+                console.error('Error submitting form:', error);
+                formStatus.textContent = 'Failed to send message. Please check your connection.';
+                formStatus.style.color = 'red';
             }
         });
     }
-
-    // Set current year in footer
-    const currentYearSpan = document.getElementById('currentYear');
-    if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
 });
