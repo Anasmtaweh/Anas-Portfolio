@@ -1,0 +1,18 @@
+# This file tells Render how to build and run your application.
+# See https://render.com/docs/blueprint-spec for more info.
+
+services:
+  # A Web Service for your Node.js/Express backend
+  - type: web
+    name: my-info-website # You can change this name
+    env: node
+    # The build command to run on every push.
+    # Render automatically detects and caches node_modules.
+    buildCommand: "npm install"
+    # The command to start your web server.
+    startCommand: "node index.js"
+    envVars:
+      - key: EMAIL_USER
+      - key: EMAIL_PASS
+      - key: YOUR_RECEIVING_EMAIL
+      # Render injects the PORT variable automatically. Your code already uses it.
