@@ -13,10 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = Object.fromEntries(formData.entries());
 
             try {
-                const response = await fetch('/submit-contact-form', {
+                // IMPORTANT: Replace with your actual Formspree endpoint URL
+                const formspreeEndpoint = 'https://formspree.io/f/xxxxxxxx';
+
+                const response = await fetch(formspreeEndpoint, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json' // Required by Formspree for AJAX
                     },
                     body: JSON.stringify(data)
                 });
@@ -24,11 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    formStatus.textContent = result.message;
+                    formStatus.textContent = "Message sent successfully! Thank you.";
                     formStatus.style.color = 'green';
                     contactForm.reset(); // Clear the form on success
                 } else {
-                    formStatus.textContent = result.error || 'An unexpected error occurred.';
+                    formStatus.textContent = (result.errors && result.errors.map(e => e.message).join(', ')) || 'An unexpected error occurred.';
                     formStatus.style.color = 'red';
                 }
             } catch (error) {
