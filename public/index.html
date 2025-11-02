@@ -1,126 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anas Mtaweh - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anas Mtaweh – Portfolio</title>
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
     <header>
-        <h1>Anas Mtaweh </h1>
-        <p>Full Stack Developer</p>
+        <h1>Anas Mtaweh</h1>
+        <p>Aley, Mount Lebanon, Lebanon · <a href="tel:+96176177435" style="color:#fff;">+961 76 177 435</a> · <a href="mailto:anasanasmtaweh@gmail.com" style="color:#fff;">anasanasmtaweh@gmail.com</a></p>
+        <p>
+            <a href="http://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener" style="color:#fff;">LinkedIn</a>
+            |
+            <a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener" style="color:#fff;">GitHub</a>
+            |
+            <a href="https://anas-mtaweh-portfolio.onrender.com/" target="_blank" rel="noopener" style="color:#fff;">Portfolio</a>
+        </p>
+        <p>
+            <a class="button" href="/cv.pdf" download>Download CV</a>
+        </p>
     </header>
 
     <nav>
-        <a href="#about">About Me</a>
-        <a href="#cv">CV</a>
+        <a href="#summary">Summary</a>
+        <a href="#education">Education</a>
         <a href="#projects">Projects</a>
-        <a href="#links">Links</a>
+        <a href="#experience">Experience</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#skills">Skills</a>
+        <a href="#languages">Languages</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hi, I’m Anas Mtaweh, a self-driven Computer Science student passionate about building impactful web applications and embracing DevOps practices.</p>
-            <p>I design and deploy full-stack solutions using Node.js, React, MongoDB, and Docker, with cloud deployments on AWS EC2/S3. I enjoy solving real problems with clean, efficient systems — from backend APIs to secure, scalable infrastructure.</p>
-            
-            <h3>🚀 Notable projects:</h3>
-            <ul>
-                <li><strong>Mishtika</strong> – an AI-powered pet care platform with scheduling, authentication, and full CI/CD deployment</li>
-                <li><strong>ATM Simulation</strong> – Java-based desktop application with a secure transaction flow</li>
-                <li><strong>Travel Booking App</strong> – Dynamic web platform using PHP and Bootstrap</li>
-            </ul>
-
-            <p>Let’s connect if you’re looking for a reliable developer who brings code quality, DevOps thinking, and continuous learning to the table.</p>
+        <section id="summary">
+            <h2>Profile Summary</h2>
+            <p>
+                Motivated computer-science undergraduate with hands-on experience in full-stack development, DevOps, and cloud deployment. Skilled in building scalable web applications using Docker, GitHub Actions, and AWS. Passionate about continuous learning, automation, and clean system architecture. Eager to contribute to innovative development teams and real-world solutions.
+            </p>
         </section>
 
-        <section id="cv">
-            <h2>CV</h2>
-            <p>
-                You can download my full CV here:
-                <a href="Anas_Mtaweh.pdf" download="Anas_Mtaweh_CV.pdf" class="button">Download CV (PDF)</a>
-            </p>
-            <!-- 
-                Ensure your CV file is named "Anas_Mtaweh.pdf" 
-                and is placed directly inside the "public" folder:
-                Anas_Mtaweh.pdf
-            -->
-            <!-- Optionally, list key skills or experience highlights directly here -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="project">
+                <h3>BSc in Computer Science</h3>
+                <p>Lebanese International University (LIU), Beirut, Lebanon</p>
+                <p><em>Expected Graduation: Fall 2025</em></p>
+                <p><strong>Relevant Coursework:</strong> Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Development</p>
+            </div>
+            <div class="project">
+                <h3>Lebanese Baccalaureate in Life Science</h3>
+                <p>Maroon Aboud Official School, Aley, Lebanon &middot; 2020</p>
+            </div>
         </section>
 
         <section id="projects">
-            <h2>My Projects</h2>
+            <h2>Projects</h2>
             <div class="project">
-                <h3>Mishtika - Pet Care Platform</h3>
-                <p>A comprehensive pet care platform designed to connect pet owners with services and information. Key features include AI chat for pet-related queries, appointment scheduling, and secure user authentication. My role involved full-stack development, from designing the backend API and database schema to building the frontend interface and deploying the application to AWS.</p>
-                <p><strong>Technologies:</strong> Node.js, Express.js, React, MongoDB, AWS (EC2, S3), Docker, Nginx, Let's Encrypt, AI OpenAI API.</p>
-                <p><em>Note: The live demo is hosted on Render's free tier and may take a moment to load on the first visit.</em></p>
+                <h3>Mishtika – Pet Care Web Platform <small>(Jan 2025 – Apr 2025)</small></h3>
                 <p>
-                    <a href="https://mishtika-app.onrender.com" target="_blank" rel="noopener noreferrer">Live Demo</a> |
-                    <a href="https://github.com/Anasmtaweh/pet-ai-project#" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
+                    Full-stack web app for pet-care management with AI chatbot, calendar scheduling, and breed-specific search.
                 </p>
-                <!-- Add screenshots or a small GIF if possible -->
+                <p><strong>Technologies:</strong> Node.js, Express, MongoDB, Docker, AWS (EC2, S3), GitHub Actions, Nginx, Let’s Encrypt, React, Jest</p>
+                <ul>
+                    <li>Developed JWT-secured REST APIs and scalable backend</li>
+                    <li>Integrated AI chatbot and automated reminders (MongoDB TTL + cron)</li>
+                    <li>Automated Docker deployments via GitHub Actions and Nginx HTTPS</li>
+                    <li>Deployed React frontend to AWS S3</li>
+                </ul>
             </div>
-            
-            <!-- Add your next project here -->
-            <!--
             <div class="project">
-                <h3>[Your Next Project Title]</h3>
-                <p>[Description of your project. What problem does it solve? What was your role? Key features.]</p>
-                <p><strong>Technologies:</strong> [List technologies used]</p>
-                <p>
-                    <a href="[LIVE_DEMO_LINK]" target="_blank" rel="noopener noreferrer">Live Demo</a> |
-                    <a href="[SOURCE_CODE_LINK]" target="_blank" rel="noopener noreferrer">Source Code (GitHub)</a>
-                </p>
+                <h3>ATM Simulation System <small>(Jan 2023 – Mar 2023)</small></h3>
+                <p>Java desktop application simulating ATM functions (login, transfers, deposits, loans, balance).</p>
+                <p><strong>Technologies:</strong> Java (JavaFX)</p>
+                <ul>
+                    <li>Built secure, user-friendly GUI with real-time updates</li>
+                </ul>
             </div>
-            -->
+            <div class="project">
+                <h3>Travel Agency Web App <small>(Oct 2023 – Dec 2023)</small></h3>
+                <p>Dynamic booking web app using HTML, CSS, Bootstrap, PHP.</p>
+                <ul>
+                    <li>Created interactive trip listings and booking forms</li>
+                    <li>Implemented validation and tested UX flow</li>
+                </ul>
+            </div>
         </section>
 
-        <section id="links">
-            <h2>Find Me Online</h2>
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="project">
+                <h3>Cashier – Stop4Cup, Aley (Lebanon)</h3>
+                <p><em>Jun 2021 – Mar 2022</em></p>
+                <ul>
+                    <li>Managed daily cash operations and inventory</li>
+                    <li>Maintained accurate records and delivered customer service excellence</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Operator – LibanJus, Beirut (Lebanon)</h3>
+                <p><em>Jun 2023 – Aug 2023</em></p>
+                <ul>
+                    <li>Improved efficiency by 15% through workflow optimization</li>
+                    <li>Resolved operational issues in a fast-paced environment</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <h2>Certificates</h2>
             <ul>
-                <li><a href="https://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <!-- Add other relevant links: Blog, Twitter, Stack Overflow, etc. -->
+                <li>AWS Certified Cloud Practitioner – Amazon Web Services (2025–2028) &middot; Credential ID: dbc01c0e5bd84db1b5457177f115f203</li>
+                <li>Introduction to DevOps – IBM &amp; Coursera</li>
+                <li>Framing Cloud Discussions for the C-Suite – LinkedIn Learning</li>
+                <li>Creating Your IT Strategy – LinkedIn Learning</li>
+                <li>Agile Project Management with Jira (1–3) – LinkedIn &amp; PMI®</li>
+                <li>Scrum: The Basics – LinkedIn &amp; PMI®</li>
+                <li>Agile Foundations; Mistakes to Avoid in Agile</li>
+                <li>Effective Technical Communication; Inclusive Tech Leadership</li>
+                <li>Succeeding as a First-Time Tech Manager</li>
+                <li>Non-Technical Skills for Data Scientists</li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Skills &amp; Qualifications</h2>
+            <ul>
+                <li><strong>Programming &amp; Web:</strong> Java, JavaScript, HTML, CSS, Bootstrap, PHP, Responsive Web Design</li>
+                <li><strong>DevOps &amp; Cloud:</strong> Docker, Git, GitHub Actions (CI/CD), Nginx, Linux (Ubuntu), Shell Scripting, AWS (EC2, S3, CloudFront)</li>
+                <li><strong>Frameworks &amp; APIs:</strong> Node.js, Express.js, REST APIs</li>
+                <li><strong>Databases:</strong> SQL, MongoDB, Microsoft Access</li>
+                <li><strong>Project &amp; Task Management:</strong> Jira Cloud (board setup, sprint planning, backlog grooming)</li>
+                <li><strong>Software Tools:</strong> Microsoft Office, Visual Studio Code, Gmail</li>
+                <li><strong>Soft Skills:</strong> Analytical thinking, teamwork, adaptability, communication</li>
+            </ul>
+        </section>
+
+        <section id="languages">
+            <h2>Languages</h2>
+            <ul>
+                <li>Arabic – Native</li>
+                <li>English – Fluent (speaking, reading, writing)</li>
             </ul>
         </section>
 
         <section id="contact">
-            <h2>Get in Touch</h2>
+            <h2>Contact</h2>
             <form id="contactForm">
                 <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required />
                 </div>
                 <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required />
                 </div>
                 <div>
-                    <label for="inquiryType">I'm interested in:</label>
+                    <label for="inquiryType">Inquiry Type</label>
                     <select id="inquiryType" name="inquiryType" required>
-                        <option value="">-- Select an option --</option>
-                        <option value="Job Opportunity">Job Opportunity</option>
-                        <option value="Freelance Work">Freelance Work</option>
-                        <option value="Temporary Help/Consultation">Temporary Help/Consultation</option>
+                        <option value="General">General</option>
+                        <option value="Opportunities">Opportunities</option>
+                        <option value="Collaboration">Collaboration</option>
                     </select>
                 </div>
                 <div>
-                    <label for="message">Message:</label>
+                    <label for="message">Message</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
                 <button type="submit">Send Message</button>
+                <div id="form-status" role="status" aria-live="polite"></div>
             </form>
-            <div id="form-status"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; <span id="currentYear"></span> Anas Mtaweh. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> Anas Mtaweh</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
