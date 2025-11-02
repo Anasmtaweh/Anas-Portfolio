@@ -50,6 +50,15 @@ app.get('/cv', (req, res) => {
     res.redirect(302, '/cv.pdf');
 });
 
+// Redirect helper for external project demos (configurable by env)
+app.get('/r/mishtika', (req, res) => {
+    const url = process.env.MISHTIKA_URL;
+    if (url && /^https?:\/\//i.test(url)) {
+        return res.redirect(302, url);
+    }
+    return res.status(404).send('Mishtika demo URL not configured');
+});
+
 // Basic strict email validation that rejects quoted local-parts and tricky constructs
 function isValidEmailStrict(input) {
     if (typeof input !== 'string') return false;

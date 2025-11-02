@@ -1,186 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anas Mtaweh – Portfolio</title>
-    <link rel="stylesheet" href="/style.css" />
-</head>
-<body>
-    <header>
-        <h1>Anas Mtaweh</h1>
-        <p>Aley, Mount Lebanon, Lebanon · <a href="tel:+96176177435" style="color:#fff;">+961 76 177 435</a> · <a href="mailto:anasanasmtaweh@gmail.com" style="color:#fff;">anasanasmtaweh@gmail.com</a></p>
-        <p>
-            <a href="http://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener" style="color:#fff;">LinkedIn</a>
-            |
-            <a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener" style="color:#fff;">GitHub</a>
-            |
-            <a href="https://anas-mtaweh-portfolio.onrender.com/" target="_blank" rel="noopener" style="color:#fff;">Portfolio</a>
-        </p>
-        <p>
-            <a class="button" href="/cv.pdf" download>Download CV</a>
-        </p>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#0ea5e9" />
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <!-- Nav -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="#home" class="font-semibold text-slate-900">Anas Mtaweh</a>
+        <nav class="hidden sm:flex gap-5 text-sm">
+          <a href="#summary" class="hover:text-sky-600">Summary</a>
+          <a href="#projects" class="hover:text-sky-600">Projects</a>
+          <a href="#experience" class="hover:text-sky-600">Experience</a>
+          <a href="#skills" class="hover:text-sky-600">Skills</a>
+          <a href="#education" class="hover:text-sky-600">Education</a>
+          <a href="#certificates" class="hover:text-sky-600">Certificates</a>
+          <a href="#contact" class="hover:text-sky-600">Contact</a>
+        </nav>
+        <a class="inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500" href="/cv.pdf" download>
+          Download CV
+        </a>
+      </div>
     </header>
 
-    <nav>
-        <a href="#summary">Summary</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#certificates">Certificates</a>
-        <a href="#skills">Skills</a>
-        <a href="#languages">Languages</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <main>
-        <section id="summary">
-            <h2>Profile Summary</h2>
-            <p>
-                Motivated computer-science undergraduate with hands-on experience in full-stack development, DevOps, and cloud deployment. Skilled in building scalable web applications using Docker, GitHub Actions, and AWS. Passionate about continuous learning, automation, and clean system architecture. Eager to contribute to innovative development teams and real-world solutions.
+    <!-- Hero -->
+    <section id="home" class="bg-gradient-to-b from-sky-50 to-transparent">
+      <div class="max-w-6xl mx-auto px-4 pt-10 pb-8 grid gap-6 md:grid-cols-2 items-center">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            Full‑stack Developer · DevOps · Cloud
+          </h1>
+          <p class="mt-3 text-slate-600">
+            Aley, Mount Lebanon, Lebanon ·
+            <a href="tel:+96176177435" class="text-sky-700 hover:underline">+961 76 177 435</a>
+            ·
+            <a href="mailto:anasanasmtaweh@gmail.com" class="text-sky-700 hover:underline">anasanasmtaweh@gmail.com</a>
+          </p>
+          <div class="mt-4 flex gap-4 text-sky-700">
+            <a href="http://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener" class="hover:underline">LinkedIn</a>
+            <a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener" class="hover:underline">GitHub</a>
+            <a href="https://anas-mtaweh-portfolio.onrender.com/" target="_blank" rel="noopener" class="hover:underline">Portfolio</a>
+          </div>
+        </div>
+        <div class="md:justify-self-end">
+          <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+            <p class="text-slate-700">
+              Motivated computer-science undergraduate with hands-on experience in full-stack development, DevOps, and cloud deployment. Skilled in building scalable web applications using Docker, GitHub Actions, and AWS. Passionate about continuous learning, automation, and clean system architecture.
             </p>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="project">
-                <h3>BSc in Computer Science</h3>
-                <p>Lebanese International University (LIU), Beirut, Lebanon</p>
-                <p><em>Expected Graduation: Fall 2025</em></p>
-                <p><strong>Relevant Coursework:</strong> Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Development</p>
+    <!-- Projects -->
+    <section id="projects" class="py-10">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-slate-900">Projects</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <!-- Mishtika -->
+          <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-semibold text-slate-900">Mishtika – Pet Care Web Platform</h3>
+                <p class="text-xs text-slate-500">Jan 2025 – Apr 2025</p>
+              </div>
+              <div class="flex gap-2">
+                <a href="/r/mishtika" target="_blank" rel="noopener" class="inline-flex items-center rounded-md bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-700">Try Web</a>
+              </div>
             </div>
-            <div class="project">
-                <h3>Lebanese Baccalaureate in Life Science</h3>
-                <p>Maroon Aboud Official School, Aley, Lebanon &middot; 2020</p>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Mishtika – Pet Care Web Platform <small>(Jan 2025 – Apr 2025)</small></h3>
-                <p>
-                    Full-stack web app for pet-care management with AI chatbot, calendar scheduling, and breed-specific search.
-                </p>
-                <p><strong>Technologies:</strong> Node.js, Express, MongoDB, Docker, AWS (EC2, S3), GitHub Actions, Nginx, Let’s Encrypt, React, Jest</p>
-                <ul>
-                    <li>Developed JWT-secured REST APIs and scalable backend</li>
-                    <li>Integrated AI chatbot and automated reminders (MongoDB TTL + cron)</li>
-                    <li>Automated Docker deployments via GitHub Actions and Nginx HTTPS</li>
-                    <li>Deployed React frontend to AWS S3</li>
-                </ul>
-            </div>
-            <div class="project">
-                <h3>ATM Simulation System <small>(Jan 2023 – Mar 2023)</small></h3>
-                <p>Java desktop application simulating ATM functions (login, transfers, deposits, loans, balance).</p>
-                <p><strong>Technologies:</strong> Java (JavaFX)</p>
-                <ul>
-                    <li>Built secure, user-friendly GUI with real-time updates</li>
-                </ul>
-            </div>
-            <div class="project">
-                <h3>Travel Agency Web App <small>(Oct 2023 – Dec 2023)</small></h3>
-                <p>Dynamic booking web app using HTML, CSS, Bootstrap, PHP.</p>
-                <ul>
-                    <li>Created interactive trip listings and booking forms</li>
-                    <li>Implemented validation and tested UX flow</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Work Experience</h2>
-            <div class="project">
-                <h3>Cashier – Stop4Cup, Aley (Lebanon)</h3>
-                <p><em>Jun 2021 – Mar 2022</em></p>
-                <ul>
-                    <li>Managed daily cash operations and inventory</li>
-                    <li>Maintained accurate records and delivered customer service excellence</li>
-                </ul>
-            </div>
-            <div class="project">
-                <h3>Operator – LibanJus, Beirut (Lebanon)</h3>
-                <p><em>Jun 2023 – Aug 2023</em></p>
-                <ul>
-                    <li>Improved efficiency by 15% through workflow optimization</li>
-                    <li>Resolved operational issues in a fast-paced environment</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <ul>
-                <li>AWS Certified Cloud Practitioner – Amazon Web Services (2025–2028) &middot; Credential ID: dbc01c0e5bd84db1b5457177f115f203</li>
-                <li>Introduction to DevOps – IBM &amp; Coursera</li>
-                <li>Framing Cloud Discussions for the C-Suite – LinkedIn Learning</li>
-                <li>Creating Your IT Strategy – LinkedIn Learning</li>
-                <li>Agile Project Management with Jira (1–3) – LinkedIn &amp; PMI®</li>
-                <li>Scrum: The Basics – LinkedIn &amp; PMI®</li>
-                <li>Agile Foundations; Mistakes to Avoid in Agile</li>
-                <li>Effective Technical Communication; Inclusive Tech Leadership</li>
-                <li>Succeeding as a First-Time Tech Manager</li>
-                <li>Non-Technical Skills for Data Scientists</li>
+            <p class="mt-3 text-slate-700">Full-stack web app for pet-care management with AI chatbot, calendar scheduling, and breed‑specific search.</p>
+            <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Technologies:</span> Node.js, Express, MongoDB, Docker, AWS (EC2, S3), GitHub Actions, Nginx, Let’s Encrypt, React, Jest</p>
+            <ul class="mt-3 list-disc list-inside text-sm text-slate-700 space-y-1">
+              <li>Developed JWT-secured REST APIs and scalable backend</li>
+              <li>Integrated AI chatbot and automated reminders (MongoDB TTL + cron)</li>
+              <li>Automated Docker deployments via GitHub Actions and Nginx HTTPS</li>
+              <li>Deployed React frontend to AWS S3</li>
             </ul>
-        </section>
+          </article>
 
-        <section id="skills">
-            <h2>Skills &amp; Qualifications</h2>
-            <ul>
-                <li><strong>Programming &amp; Web:</strong> Java, JavaScript, HTML, CSS, Bootstrap, PHP, Responsive Web Design</li>
-                <li><strong>DevOps &amp; Cloud:</strong> Docker, Git, GitHub Actions (CI/CD), Nginx, Linux (Ubuntu), Shell Scripting, AWS (EC2, S3, CloudFront)</li>
-                <li><strong>Frameworks &amp; APIs:</strong> Node.js, Express.js, REST APIs</li>
-                <li><strong>Databases:</strong> SQL, MongoDB, Microsoft Access</li>
-                <li><strong>Project &amp; Task Management:</strong> Jira Cloud (board setup, sprint planning, backlog grooming)</li>
-                <li><strong>Software Tools:</strong> Microsoft Office, Visual Studio Code, Gmail</li>
-                <li><strong>Soft Skills:</strong> Analytical thinking, teamwork, adaptability, communication</li>
+          <!-- ATM Simulation -->
+          <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 class="text-lg font-semibold text-slate-900">ATM Simulation System</h3>
+            <p class="text-xs text-slate-500">Jan 2023 – Mar 2023</p>
+            <p class="mt-3 text-slate-700">Java desktop application simulating ATM functions (login, transfers, deposits, loans, balance).</p>
+            <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Technologies:</span> Java (JavaFX)</p>
+          </article>
+
+          <!-- Travel Agency -->
+          <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 class="text-lg font-semibold text-slate-900">Travel Agency Web App</h3>
+            <p class="text-xs text-slate-500">Oct 2023 – Dec 2023</p>
+            <p class="mt-3 text-slate-700">Dynamic booking web app using HTML, CSS, Bootstrap, PHP.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-10 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-slate-900">Work Experience</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <article class="rounded-xl border border-slate-200 p-6">
+            <h3 class="font-semibold text-slate-900">Cashier – Stop4Cup, Aley (Lebanon)</h3>
+            <p class="text-xs text-slate-500">Jun 2021 – Mar 2022</p>
+            <ul class="mt-3 list-disc list-inside text-slate-700 space-y-1">
+              <li>Managed daily cash operations and inventory</li>
+              <li>Maintained accurate records and delivered customer service excellence</li>
             </ul>
-        </section>
-
-        <section id="languages">
-            <h2>Languages</h2>
-            <ul>
-                <li>Arabic – Native</li>
-                <li>English – Fluent (speaking, reading, writing)</li>
+          </article>
+          <article class="rounded-xl border border-slate-200 p-6">
+            <h3 class="font-semibold text-slate-900">Operator – LibanJus, Beirut (Lebanon)</h3>
+            <p class="text-xs text-slate-500">Jun 2023 – Aug 2023</p>
+            <ul class="mt-3 list-disc list-inside text-slate-700 space-y-1">
+              <li>Improved efficiency by 15% through workflow optimization</li>
+              <li>Resolved operational issues in a fast-paced environment</li>
             </ul>
-        </section>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <form id="contactForm">
-                <div>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" required />
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required />
-                </div>
-                <div>
-                    <label for="inquiryType">Inquiry Type</label>
-                    <select id="inquiryType" name="inquiryType" required>
-                        <option value="General">General</option>
-                        <option value="Opportunities">Opportunities</option>
-                        <option value="Collaboration">Collaboration</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-                <div id="form-status" role="status" aria-live="polite"></div>
-            </form>
-        </section>
-    </main>
+    <!-- Skills -->
+    <section id="skills" class="py-10">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-slate-900">Skills &amp; Qualifications</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">Java</span>
+          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">JavaScript</span>
+          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">HTML</span>
+          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">CSS</span>
+          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">Bootstrap</span>
+          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">PHP</span>
+          <span class="px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full">Docker</span>
+          <span class="px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full">GitHub Actions</span>
+          <span class="px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full">AWS (EC2, S3, CloudFront)</span>
+          <span class="px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full">Node.js</span>
+          <span class="px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full">Express</span>
+          <span class="px-3 py-1 text-sm bg-fuchsia-100 text-fuchsia-800 rounded-full">REST APIs</span>
+          <span class="px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full">SQL</span>
+          <span class="px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full">MongoDB</span>
+          <span class="px-3 py-1 text-sm bg-rose-100 text-rose-800 rounded-full">Jira</span>
+        </div>
+      </div>
+    </section>
 
-    <footer>
+    <!-- Education -->
+    <section id="education" class="py-10 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-slate-900">Education</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <article class="rounded-xl border border-slate-200 p-6">
+            <h3 class="font-semibold text-slate-900">BSc in Computer Science</h3>
+            <p class="text-slate-700">Lebanese International University (LIU), Beirut, Lebanon</p>
+            <p class="text-xs text-slate-500">Expected Graduation: Fall 2025</p>
+            <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Relevant Coursework:</span> Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Development</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 p-6">
+            <h3 class="font-semibold text-slate-900">Lebanese Baccalaureate in Life Science</h3>
+            <p class="text-slate-700">Maroon Aboud Official School, Aley, Lebanon · 2020</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section id="certificates" class="py-10">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-slate-900">Certificates</h2>
+        <ul class="mt-4 grid gap-2 text-slate-700">
+          <li>AWS Certified Cloud Practitioner – Amazon Web Services (2025–2028) · Credential ID: dbc01c0e5bd84db1b5457177f115f203</li>
+          <li>Introduction to DevOps – IBM &amp; Coursera</li>
+          <li>Framing Cloud Discussions for the C-Suite – LinkedIn Learning</li>
+          <li>Creating Your IT Strategy – LinkedIn Learning</li>
+          <li>Agile Project Management with Jira (1–3) – LinkedIn &amp; PMI®</li>
+          <li>Scrum: The Basics – LinkedIn &amp; PMI®</li>
+          <li>Agile Foundations; Mistakes to Avoid in Agile</li>
+          <li>Effective Technical Communication; Inclusive Tech Leadership</li>
+          <li>Succeeding as a First-Time Tech Manager</li>
+          <li>Non-Technical Skills for Data Scientists</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-10 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-slate-900">Contact</h2>
+        <form id="contactForm" class="mt-6 grid gap-4 md:max-w-xl">
+          <div>
+            <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
+            <input id="name" name="name" type="text" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
+            <input id="email" name="email" type="email" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" />
+          </div>
+          <div>
+            <label for="inquiryType" class="block text-sm font-medium text-slate-700">Inquiry Type</label>
+            <select id="inquiryType" name="inquiryType" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500">
+              <option value="General">General</option>
+              <option value="Opportunities">Opportunities</option>
+              <option value="Collaboration">Collaboration</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
+            <textarea id="message" name="message" rows="5" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500"></textarea>
+          </div>
+          <button type="submit" class="inline-flex w-fit items-center rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500">Send Message</button>
+          <div id="form-status" role="status" aria-live="polite" class="text-sm"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
         <p>&copy; <span id="year"></span> Anas Mtaweh</p>
+        <div class="flex gap-4 text-sky-700">
+          <a href="http://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener" class="hover:underline">LinkedIn</a>
+          <a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener" class="hover:underline">GitHub</a>
+          <a href="/cv.pdf" download class="hover:underline">CV</a>
+        </div>
+      </div>
     </footer>
 
     <script src="/script.js"></script>
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-</body>
-</html>
+  </body>
+  </html>
