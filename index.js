@@ -50,13 +50,18 @@ app.get('/cv', (req, res) => {
     res.redirect(302, '/cv.pdf');
 });
 
-// Redirect helper for external project demos (configurable by env)
+// Resolve Mishtika URL from env or use a reliable fallback
+function getMishtikaUrl() {
+    const envUrl = process.env.MISHTIKA_URL;
+    const fallbackUrl = 'https://pet-ai-render.onrender.com';
+    if (envUrl && /^https?:\/\//i.test(envUrl)) return envUrl;
+    return fallbackUrl;
+}
+
+// Redirect helper for external project demos (configurable by env, with fallback)
 app.get('/r/mishtika', (req, res) => {
-    const url = process.env.MISHTIKA_URL;
-    if (url && /^https?:\/\//i.test(url)) {
-        return res.redirect(302, url);
-    }
-    return res.status(404).send('Mishtika demo URL not configured');
+    const url = getMishtikaUrl();
+    return res.redirect(302, url);
 });
 
 // Basic strict email validation that rejects quoted local-parts and tricky constructs
@@ -153,5 +158,9 @@ app.use((req, res) => {
 });
 
 app.listen(port, () => {
+    const latestCVPath = resolveLatestCV();
+    const cvName = latestCVPath ? path.basename(latestCVPath) : 'none';
     console.log(`Server running on http://localhost:${port}`);
+    console.log(`[startup] CV selected for /cv.pdf: ${cvName}`);
+    console.log(`[startup] Mishtika redirect: ${getMishtikaUrl()}`);
 });
