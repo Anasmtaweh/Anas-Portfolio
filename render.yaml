@@ -20,5 +20,5 @@ services:
       - key: YOUR_RECEIVING_EMAIL
         value: "" # Placeholder, actual value set in Render dashboard
       - key: MISHTIKA_URL
-        value: "" # Set this to your Mishtika live demo URL (e.g., https://your-app.onrender.com)
+        value: "https://mishtika-app.onrender.com" # Mishtika live demo URL
       # Render injects the PORT variable automatically. Your code already uses it.
