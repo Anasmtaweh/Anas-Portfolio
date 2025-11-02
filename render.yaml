@@ -21,4 +21,6 @@ services:
         value: "" # Placeholder, actual value set in Render dashboard
       - key: MISHTIKA_URL
         value: "https://pet-ai-render.onrender.com" # Mishtika live demo URL
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false" # Ensure devDependencies (Tailwind CLI) are installed during build
       # Render injects the PORT variable automatically. Your code already uses it.
