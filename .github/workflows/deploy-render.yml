@@ -1,0 +1,24 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Deploy Hook
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK" ]; then
+            echo "ERROR: GitHub secret RENDER_DEPLOY_HOOK is not set." >&2
+            echo "Set it in: Settings > Secrets and variables > Actions > New repository secret" >&2
+            exit 1
+          fi
+          echo "Triggering Render deploy via Deploy Hook..."
+          curl -fsSL -X POST "$RENDER_DEPLOY_HOOK"
+          echo "Deploy hook triggered. Check Render dashboard for deploy status."
+

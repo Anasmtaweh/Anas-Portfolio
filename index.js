@@ -45,6 +45,11 @@ app.get('/cv.pdf', (req, res) => {
     res.download(latestCVPath, 'Anas_Mtaweh_CV.pdf');
 });
 
+// Convenience redirect from /cv to the downloadable file
+app.get('/cv', (req, res) => {
+    res.redirect(302, '/cv.pdf');
+});
+
 app.post('/submit-contact-form', async (req, res) => {
     const { name, email, inquiryType, message } = req.body;
 
