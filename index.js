@@ -50,11 +50,37 @@ app.get('/cv', (req, res) => {
     res.redirect(302, '/cv.pdf');
 });
 
+// Basic strict email validation that rejects quoted local-parts and tricky constructs
+function isValidEmailStrict(input) {
+    if (typeof input !== 'string') return false;
+    const email = input.trim();
+    if (!email || email.length > 254) return false;
+    // Disallow characters that enable header injection or quoted local-parts
+    if (/["()<>\\,;:\s]/.test(email)) return false; // quotes, spaces, and specials
+    const parts = email.split('@');
+    if (parts.length !== 2) return false;
+    const [local, domain] = parts;
+    if (!local || !domain) return false;
+    // Local-part: allow common unquoted atoms
+    if (!/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+$/.test(local)) return false;
+    // Domain: labels 1-63 chars, no leading/trailing hyphen, at least one dot, TLD >= 2
+    const labels = domain.split('.');
+    if (labels.length < 2) return false;
+    if (!labels.every(l => /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)$/.test(l))) return false;
+    if (labels[labels.length - 1].length < 2) return false;
+    return true;
+}
+
 app.post('/submit-contact-form', async (req, res) => {
     const { name, email, inquiryType, message } = req.body;
 
     if (!name || !email || !inquiryType || !message) {
         return res.status(400).json({ success: false, error: 'All fields are required.' });
+    }
+
+    // Validate reply-to address strictly to avoid misrouting via tricky quoted local-parts
+    if (!isValidEmailStrict(email)) {
+        return res.status(400).json({ success: false, error: 'Please provide a valid email address (no quotes, spaces, or special characters).' });
     }
 
     // Configure nodemailer
@@ -76,9 +102,13 @@ app.post('/submit-contact-form', async (req, res) => {
     });
 
     const mailOptions = {
-        from: `"${name}" <${process.env.EMAIL_USER}>`, // Sender address (can be your email if provider restricts 'from')
-        replyTo: email, // Set the reply-to to the user's email
-        to: process.env.YOUR_RECEIVING_EMAIL,      // List of receivers (your email from .env)
+        from: `"${(name || '').toString().replace(/[\r\n]/g, ' ').slice(0, 128)}" <${process.env.EMAIL_USER}>`, // safe display name
+        replyTo: email, // header-only, after strict validation
+        to: process.env.YOUR_RECEIVING_EMAIL,      // header: stays constant for display
+        envelope: {                                // SMTP envelope: authoritative recipients
+            from: process.env.EMAIL_USER,
+            to: [process.env.YOUR_RECEIVING_EMAIL]
+        },
         subject: `Portfolio Inquiry: ${inquiryType} from ${name}`, // Subject line
         text: `You have a new inquiry from your portfolio website:
         
