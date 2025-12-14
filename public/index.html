@@ -6,25 +6,88 @@
     <title>Anas Mtaweh – Portfolio</title>
     <link rel="stylesheet" href="/assets/tailwind.css" />
     <meta name="theme-color" content="#0ea5e9" />
+    <style>
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      .animate-slide-in {
+        animation: slideInLeft 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      .project-card {
+        transition: all 0.3s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .skill-badge {
+        transition: all 0.2s ease;
+      }
+      .skill-badge:hover {
+        transform: scale(1.05);
+      }
+      .nav-link {
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background: #0ea5e9;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+    </style>
   </head>
   <body class="bg-slate-50 text-slate-800">
     <!-- Nav -->
     <header class="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
       <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <a href="#home" class="font-semibold text-slate-900">Anas Mtaweh</a>
-        <nav class="hidden sm:flex gap-5 text-sm">
-          <a href="#summary" class="hover:text-sky-600">Summary</a>
-          <a href="#projects" class="hover:text-sky-600">Projects</a>
-          <a href="#experience" class="hover:text-sky-600">Experience</a>
-          <a href="#skills" class="hover:text-sky-600">Skills</a>
-          <a href="#education" class="hover:text-sky-600">Education</a>
-          <a href="#certificates" class="hover:text-sky-600">Certificates</a>
-          <a href="#contact" class="hover:text-sky-600">Contact</a>
+        <nav id="mobile-menu" class="hidden sm:flex gap-5 text-sm">
+          <a href="#summary" class="nav-link hover:text-sky-600">Summary</a>
+          <a href="#projects" class="nav-link hover:text-sky-600">Projects</a>
+          <a href="#experience" class="nav-link hover:text-sky-600">Experience</a>
+          <a href="#skills" class="nav-link hover:text-sky-600">Skills</a>
+          <a href="#education" class="nav-link hover:text-sky-600">Education</a>
+          <a href="#certificates" class="nav-link hover:text-sky-600">Certificates</a>
+          <a href="#contact" class="nav-link hover:text-sky-600">Contact</a>
         </nav>
-        <a class="inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500" href="/cv.pdf" download>
+        <button id="menu-toggle" class="sm:hidden text-slate-900 hover:text-sky-600 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <a class="hidden sm:inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-sky-700 transition focus:outline-none focus:ring-2 focus:ring-sky-500" href="/cv.pdf" download>
           Download CV
         </a>
       </div>
+      <nav id="mobile-nav" class="hidden sm:hidden bg-white border-t border-slate-200 px-4 py-3">
+        <a href="#summary" class="block py-2 text-slate-700 hover:text-sky-600">Summary</a>
+        <a href="#projects" class="block py-2 text-slate-700 hover:text-sky-600">Projects</a>
+        <a href="#experience" class="block py-2 text-slate-700 hover:text-sky-600">Experience</a>
+        <a href="#skills" class="block py-2 text-slate-700 hover:text-sky-600">Skills</a>
+        <a href="#education" class="block py-2 text-slate-700 hover:text-sky-600">Education</a>
+        <a href="#certificates" class="block py-2 text-slate-700 hover:text-sky-600">Certificates</a>
+        <a href="#contact" class="block py-2 text-slate-700 hover:text-sky-600">Contact</a>
+        <a class="block mt-3 rounded-md bg-sky-600 px-3 py-2 text-sm font-medium text-white text-center hover:bg-sky-700 transition" href="/cv.pdf" download>Download CV</a>
+      </nav>
     </header>
 
     <!-- Hero -->
@@ -62,14 +125,14 @@
         <h2 class="text-2xl font-bold text-slate-900">Projects</h2>
         <div class="mt-6 grid gap-6 md:grid-cols-2">
           <!-- Mishtika -->
-          <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <article class="project-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-in-up" style="animation-delay: 0.1s">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <h3 class="text-lg font-semibold text-slate-900">Mishtika – Pet Care Web Platform</h3>
                 <p class="text-xs text-slate-500">Jan 2025 – Apr 2025</p>
               </div>
               <div class="flex gap-2">
-                <a href="/r/mishtika" target="_blank" rel="noopener" class="inline-flex items-center rounded-md bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-700">Try Web</a>
+                <a href="/r/mishtika" target="_blank" rel="noopener" class="inline-flex items-center rounded-md bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-700 transition shadow-sm hover:shadow-md">Try Web</a>
               </div>
             </div>
             <p class="mt-3 text-slate-700">Full-stack web app for pet-care management with AI chatbot, calendar scheduling, and breed‑specific search.</p>
@@ -83,7 +146,7 @@
           </article>
 
           <!-- ATM Simulation -->
-          <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <article class="project-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-in-up" style="animation-delay: 0.2s">
             <h3 class="text-lg font-semibold text-slate-900">ATM Simulation System</h3>
             <p class="text-xs text-slate-500">Jan 2023 – Mar 2023</p>
             <p class="mt-3 text-slate-700">Java desktop application simulating ATM functions (login, transfers, deposits, loans, balance).</p>
@@ -91,7 +154,7 @@
           </article>
 
           <!-- Travel Agency -->
-          <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+          <article class="project-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-in-up" style="animation-delay: 0.3s">
             <h3 class="text-lg font-semibold text-slate-900">Travel Agency Web App</h3>
             <p class="text-xs text-slate-500">Oct 2023 – Dec 2023</p>
             <p class="mt-3 text-slate-700">Dynamic booking web app using HTML, CSS, Bootstrap, PHP.</p>
@@ -105,7 +168,7 @@
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-2xl font-bold text-slate-900">Work Experience</h2>
         <div class="mt-6 grid gap-6 md:grid-cols-2">
-          <article class="rounded-xl border border-slate-200 p-6">
+          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.1s">
             <h3 class="font-semibold text-slate-900">Cashier – Stop4Cup, Aley (Lebanon)</h3>
             <p class="text-xs text-slate-500">Jun 2021 – Mar 2022</p>
             <ul class="mt-3 list-disc list-inside text-slate-700 space-y-1">
@@ -113,7 +176,7 @@
               <li>Maintained accurate records and delivered customer service excellence</li>
             </ul>
           </article>
-          <article class="rounded-xl border border-slate-200 p-6">
+          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.2s">
             <h3 class="font-semibold text-slate-900">Operator – LibanJus, Beirut (Lebanon)</h3>
             <p class="text-xs text-slate-500">Jun 2023 – Aug 2023</p>
             <ul class="mt-3 list-disc list-inside text-slate-700 space-y-1">
@@ -130,21 +193,21 @@
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-2xl font-bold text-slate-900">Skills &amp; Qualifications</h2>
         <div class="mt-4 flex flex-wrap gap-2">
-          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">Java</span>
-          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">JavaScript</span>
-          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">HTML</span>
-          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">CSS</span>
-          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">Bootstrap</span>
-          <span class="px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full">PHP</span>
-          <span class="px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full">Docker</span>
-          <span class="px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full">GitHub Actions</span>
-          <span class="px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full">AWS (EC2, S3, CloudFront)</span>
-          <span class="px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full">Node.js</span>
-          <span class="px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full">Express</span>
-          <span class="px-3 py-1 text-sm bg-fuchsia-100 text-fuchsia-800 rounded-full">REST APIs</span>
-          <span class="px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full">SQL</span>
-          <span class="px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full">MongoDB</span>
-          <span class="px-3 py-1 text-sm bg-rose-100 text-rose-800 rounded-full">Jira</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">Java</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">JavaScript</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">HTML</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">CSS</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">Bootstrap</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">PHP</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full cursor-pointer">Docker</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full cursor-pointer">GitHub Actions</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full cursor-pointer">AWS (EC2, S3, CloudFront)</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full cursor-pointer">Node.js</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full cursor-pointer">Express</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-fuchsia-100 text-fuchsia-800 rounded-full cursor-pointer">REST APIs</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full cursor-pointer">SQL</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full cursor-pointer">MongoDB</span>
+          <span class="skill-badge px-3 py-1 text-sm bg-rose-100 text-rose-800 rounded-full cursor-pointer">Jira</span>
         </div>
       </div>
     </section>
@@ -154,13 +217,13 @@
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-2xl font-bold text-slate-900">Education</h2>
         <div class="mt-6 grid gap-6 md:grid-cols-2">
-          <article class="rounded-xl border border-slate-200 p-6">
+          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.1s">
             <h3 class="font-semibold text-slate-900">BSc in Computer Science</h3>
             <p class="text-slate-700">Lebanese International University (LIU), Beirut, Lebanon</p>
             <p class="text-xs text-slate-500">Expected Graduation: Fall 2025</p>
             <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Relevant Coursework:</span> Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Development</p>
           </article>
-          <article class="rounded-xl border border-slate-200 p-6">
+          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.2s">
             <h3 class="font-semibold text-slate-900">Lebanese Baccalaureate in Life Science</h3>
             <p class="text-slate-700">Maroon Aboud Official School, Aley, Lebanon · 2020</p>
           </article>
@@ -212,7 +275,7 @@
             <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
             <textarea id="message" name="message" rows="5" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500"></textarea>
           </div>
-          <button type="submit" class="inline-flex w-fit items-center rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500">Send Message</button>
+          <button type="submit" class="inline-flex w-fit items-center rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-sky-700 transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500">Send Message</button>
           <div id="form-status" role="status" aria-live="polite" class="text-sm"></div>
         </form>
       </div>
