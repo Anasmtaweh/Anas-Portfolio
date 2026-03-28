@@ -54,65 +54,86 @@
         width: 100%;
       }
     </style>
+    <script>
+      // Automatically set dark mode based on localStorage or system preference to prevent FOUC
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
   </head>
-  <body class="bg-slate-50 text-slate-800">
+  <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
     <!-- Nav -->
-    <header class="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/70 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="#home" class="font-semibold text-slate-900">Anas Mtaweh</a>
+        <a href="#home" class="font-semibold text-slate-900 dark:text-white">Anas Mtaweh</a>
         <nav id="mobile-menu" class="hidden sm:flex gap-5 text-sm">
-          <a href="#summary" class="nav-link hover:text-sky-600">Summary</a>
-          <a href="#projects" class="nav-link hover:text-sky-600">Projects</a>
-          <a href="#experience" class="nav-link hover:text-sky-600">Experience</a>
-          <a href="#skills" class="nav-link hover:text-sky-600">Skills</a>
-          <a href="#education" class="nav-link hover:text-sky-600">Education</a>
-          <a href="#certificates" class="nav-link hover:text-sky-600">Certificates</a>
-          <a href="#contact" class="nav-link hover:text-sky-600">Contact</a>
+          <a href="#summary" class="nav-link hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400">Summary</a>
+          <a href="#projects" class="nav-link hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400">Projects</a>
+          <a href="#experience" class="nav-link hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400">Experience</a>
+          <a href="#skills" class="nav-link hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400">Skills</a>
+          <a href="#education" class="nav-link hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400">Education</a>
+          <a href="#certificates" class="nav-link hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400">Certificates</a>
+          <a href="#contact" class="nav-link hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400">Contact</a>
         </nav>
-        <button id="menu-toggle" class="sm:hidden text-slate-900 hover:text-sky-600 transition">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-        <a class="hidden sm:inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-sky-700 transition focus:outline-none focus:ring-2 focus:ring-sky-500" href="/cv.pdf" download>
-          Download CV
-        </a>
+        <div class="flex items-center gap-4">
+          <button id="theme-toggle" class="text-slate-600 hover:text-sky-600 dark:text-slate-400 dark:hover:text-sky-400 transition" aria-label="Toggle Dark Mode">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+          <button id="menu-toggle" class="sm:hidden text-slate-900 dark:text-white hover:text-sky-600 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <a class="hidden sm:inline-flex items-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-sky-700 transition focus:outline-none focus:ring-2 focus:ring-sky-500" href="/cv.pdf" download>
+            Download CV
+          </a>
+        </div>
       </div>
-      <nav id="mobile-nav" class="hidden sm:hidden bg-white border-t border-slate-200 px-4 py-3">
-        <a href="#summary" class="block py-2 text-slate-700 hover:text-sky-600">Summary</a>
-        <a href="#projects" class="block py-2 text-slate-700 hover:text-sky-600">Projects</a>
-        <a href="#experience" class="block py-2 text-slate-700 hover:text-sky-600">Experience</a>
-        <a href="#skills" class="block py-2 text-slate-700 hover:text-sky-600">Skills</a>
-        <a href="#education" class="block py-2 text-slate-700 hover:text-sky-600">Education</a>
-        <a href="#certificates" class="block py-2 text-slate-700 hover:text-sky-600">Certificates</a>
-        <a href="#contact" class="block py-2 text-slate-700 hover:text-sky-600">Contact</a>
+      <nav id="mobile-nav" class="hidden sm:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 py-3">
+        <a href="#summary" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400">Summary</a>
+        <a href="#projects" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400">Projects</a>
+        <a href="#experience" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400">Experience</a>
+        <a href="#skills" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400">Skills</a>
+        <a href="#education" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400">Education</a>
+        <a href="#certificates" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400">Certificates</a>
+        <a href="#contact" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400">Contact</a>
         <a class="block mt-3 rounded-md bg-sky-600 px-3 py-2 text-sm font-medium text-white text-center hover:bg-sky-700 transition" href="/cv.pdf" download>Download CV</a>
       </nav>
     </header>
 
     <!-- Hero -->
-    <section id="home" class="bg-gradient-to-b from-sky-50 to-transparent">
-      <div class="max-w-6xl mx-auto px-4 pt-10 pb-8 grid gap-6 md:grid-cols-2 items-center">
-        <div>
-          <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Full‑stack Developer · DevOps · Cloud
+    <section id="home" class="bg-gradient-to-b from-sky-50 dark:from-sky-900/20 to-transparent transition-colors">
+      <div class="max-w-6xl mx-auto px-4 pt-10 pb-12 grid gap-8 md:grid-cols-2 items-center">
+        <div class="space-y-4">
+          <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Full‑stack Developer <br/>
+            <span class="text-sky-600 dark:text-sky-400">DevOps & Cloud</span>
           </h1>
-          <p class="mt-3 text-slate-600">
+          <p class="text-slate-600 dark:text-slate-400 flex flex-wrap gap-2 text-sm">
             Aley, Mount Lebanon, Lebanon ·
-            <a href="tel:+96176177435" class="text-sky-700 hover:underline">+961 76 177 435</a>
+            <a href="tel:+96176177435" class="text-sky-700 dark:text-sky-400 hover:underline">+961 76 177 435</a>
             ·
-            <a href="mailto:anasanasmtaweh@gmail.com" class="text-sky-700 hover:underline">anasanasmtaweh@gmail.com</a>
+            <a href="mailto:anasanasmtaweh@gmail.com" class="text-sky-700 dark:text-sky-400 hover:underline">anasanasmtaweh@gmail.com</a>
           </p>
-          <div class="mt-4 flex gap-4 text-sky-700">
-            <a href="http://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener" class="hover:underline">LinkedIn</a>
-            <a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener" class="hover:underline">GitHub</a>
-            <a href="https://anas-mtaweh-portfolio.onrender.com/" target="_blank" rel="noopener" class="hover:underline">Portfolio</a>
+          <div class="flex gap-4 text-sky-700 dark:text-sky-400 text-sm">
+            <a href="http://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener" class="hover:underline hover:text-sky-500">LinkedIn</a>
+            <a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener" class="hover:underline hover:text-sky-500">GitHub</a>
+            <a href="https://anas-mtaweh-portfolio.onrender.com/" target="_blank" rel="noopener" class="hover:underline hover:text-sky-500">Portfolio</a>
           </div>
         </div>
-        <div class="md:justify-self-end">
-          <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <p class="text-slate-700">
-              Motivated computer-science undergraduate with hands-on experience in full-stack development, DevOps, and cloud deployment. Skilled in building scalable web applications using Docker, GitHub Actions, and AWS. Passionate about continuous learning, automation, and clean system architecture.
+        <div class="md:justify-self-end w-full max-w-sm">
+          <div class="mb-6 flex justify-center lg:justify-end">
+            <div class="relative group">
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-sky-600 to-emerald-600 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+              <img src="/assets/avatar.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%230ea5e9\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><circle cx=\'12\' cy=\'8\' r=\'5\'/><path d=\'M20 21a8 8 0 1 0-16 0\'/><rect width=\'24\' height=\'24\' fill=\'%23f1f5f9\'/></svg>'" alt="Anas Mtaweh" class="relative w-36 h-36 md:w-52 md:h-52 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-xl transition-all" />
+            </div>
+          </div>
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm relative z-10 transition-colors">
+            <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+              Motivated computer science undergraduate with hands-on experience in full-stack development, DevOps, and cloud deployment. Skilled in building scalable web applications using Docker, GitHub Actions, and AWS. Passionate about continuous learning, automation, and clean system architecture.
             </p>
           </div>
         </div>
@@ -122,55 +143,59 @@
     <!-- Projects -->
     <section id="projects" class="py-10">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-slate-900">Projects</h2>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Projects</h2>
         <div class="mt-6 grid gap-6 md:grid-cols-2">
           <!-- Mishtika -->
-          <article class="project-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-in-up" style="animation-delay: 0.1s">
+          <article class="project-card rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm animate-fade-in-up transition-colors" style="animation-delay: 0.1s">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-lg font-semibold text-slate-900">MISHTIKA – AI-Powered Pet Platform</h3>
-                <p class="text-xs text-slate-500">Jan 2025 – Apr 2025</p>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">MISHTIKA</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Full-Stack AI Pet Care Platform</p>
               </div>
             </div>
-            <p class="mt-3 text-slate-700">A comprehensive, full-stack web application designed for managing pet profiles, scheduling events, and getting AI-powered care advice.</p>
-            <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Technologies:</span> React, Node.js, Express, MongoDB, Docker, AWS (EC2, S3), GitHub Actions (CI/CD), OpenAI API, Jest</p>
-            <ul class="mt-3 list-disc list-inside text-sm text-slate-700 space-y-1">
-              <li>Developed JWT-secured REST APIs with robust backend architecture and Cron reminders.</li>
-              <li>Integrated OpenAI chat agent for personalized pet-care guidance.</li>
-              <li>Engineered seamless CI/CD pipeline deploying front-end to S3 and back-end to EC2 via Docker.</li>
+            <p class="mt-3 text-slate-700 dark:text-slate-300">A comprehensive, full-stack web application designed to assist pet owners with managing profiles, scheduling events, and securing personalized AI care guidance.</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400"><span class="font-medium">Technologies:</span> React, Node.js, MongoDB, Docker, AWS (EC2, S3, ECR), GitHub Actions, OpenAI API</p>
+            <ul class="mt-3 list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Architected a robust Node.js/Express backend with JWT-secured authentication and role-based admin moderation.</li>
+              <li>Integrated the OpenAI API to deploy an intelligent chat agent generating personalized healthcare recommendations.</li>
+              <li>Engineered an automated background CRON scheduling system with Nodemailer to trigger perfectly timed event reminders.</li>
+              <li>Orchestrated an end-to-end CI/CD pipeline using GitHub Actions to automatically test (Jest) and deploy Dockerized services to AWS EC2 and React assets to S3.</li>
             </ul>
           </article>
 
           <!-- Lokr -->
-          <article class="project-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-in-up" style="animation-delay: 0.2s">
+          <article class="project-card rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm animate-fade-in-up transition-colors" style="animation-delay: 0.2s">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-lg font-semibold text-slate-900">Lokr – Local Graph-RAG Engine</h3>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Lokr</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Local Graph-RAG Code Intelligence</p>
               </div>
             </div>
-            <p class="mt-3 text-slate-700">A privacy-first, GPU-accelerated code intelligence engine. Indexes codebases using AST parsing and semantic vectors, providing local Ollama LLMs with precise context.</p>
-            <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Technologies:</span> Python, Streamlit, ChromaDB, Tree-sitter, Ollama, MCP</p>
-            <ul class="mt-3 list-disc list-inside text-sm text-slate-700 space-y-1">
-              <li>Polyglot AST parsing (Python, JS, TS, PHP, HTML) and dependency graph scanning to index entire projects locally.</li>
-              <li>Hybrid Search combining semantic embeddings and code graph navigation.</li>
-              <li>Developed a Model Context Protocol (MCP) server for deep AI agent tool integration.</li>
+            <p class="mt-3 text-slate-700 dark:text-slate-300">A 100% local, privacy-first, GPU-accelerated contextual engine leveraging AST parsing and semantic vectors to augment local LLMs like Ollama.</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400"><span class="font-medium">Technologies:</span> Python, Streamlit, ChromaDB, Tree-sitter, NetworkX, Ollama, MCP</p>
+            <ul class="mt-3 list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Engineered a Polyglot AST parsing engine via Tree-sitter to map dependencies across 6 modern programming languages.</li>
+              <li>Developed a Hybrid RAG architecture fusing semantic similarity caching (ChromaDB) with topological execution graphs (NetworkX).</li>
+              <li>Designed performance-critical incremental re-indexing ("Git Watchman") eliminating redundant text processing.</li>
+              <li>Deployed an MCP stdio server granting AI agents native read-access into localized developer environments.</li>
             </ul>
           </article>
 
           <!-- Checkers RL Oracle -->
-          <article class="project-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-in-up md:col-span-2" style="animation-delay: 0.3s">
+          <article class="project-card rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm animate-fade-in-up md:col-span-2 transition-colors" style="animation-delay: 0.3s">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-lg font-semibold text-slate-900">Checkers RL Oracle</h3>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Checkers RL Oracle</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Self-Play Reinforcement Learning</p>
               </div>
             </div>
-            <p class="mt-3 text-slate-700">A tabula rasa, dual-architecture reinforcement learning engine evaluating a value-based D3QN agent head-to-head against a search-based AlphaZero-inspired model via self-play.</p>
-            <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Technologies:</span> Python, PyTorch, Ray, Flask, Monte Carlo Tree Search (MCTS)</p>
-            <ul class="mt-3 list-disc list-inside text-sm text-slate-700 space-y-1">
-              <li>Designed AlphaZero-inspired engine utilizing a dual-head network and MCTS for search evaluations.</li>
-              <li>Engineered a D3QN agent using 5-channel spatial encoding and decoupled state/advantage valuation.</li>
-              <li>Implemented distributed multi-worker training architectures using Ray.</li>
-              <li>Deployed a Flask web arena enabling live simulated matchups against trained reinforcement models.</li>
+            <p class="mt-3 text-slate-700 dark:text-slate-300">A tabula rasa, dual-architecture reinforcement learning engine designed to evaluate a value-based D3QN agent head-to-head against a search-based AlphaZero-inspired model.</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400"><span class="font-medium">Technologies:</span> Python, PyTorch, Ray, Flask, Monte Carlo Tree Search (MCTS)</p>
+            <ul class="mt-3 list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Engineered a dual-head AlphaZero-inspired engine with MCTS, achieving a 100% win rate against random play and a 0% loss rate against value-based agents.</li>
+              <li>Developed a 5-channel spatial-encoded D3QN agent to decouple state-value estimation from action advantages.</li>
+              <li>Scaled training pipelines using Ray for distributed, multi-worker asynchronous experience collection.</li>
+              <li>Built a Flask-based web arena for real-time interactive evaluation and visualization of trained models.</li>
             </ul>
           </article>
         </div>
@@ -178,22 +203,22 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="py-10 bg-white">
+    <section id="experience" class="py-10 bg-white dark:bg-slate-900 transition-colors">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-slate-900">Work Experience</h2>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Work Experience</h2>
         <div class="mt-6 grid gap-6 md:grid-cols-2">
-          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.1s">
-            <h3 class="font-semibold text-slate-900">Cashier – Stop4Cup, Aley (Lebanon)</h3>
-            <p class="text-xs text-slate-500">Jun 2021 – Mar 2022</p>
-            <ul class="mt-3 list-disc list-inside text-slate-700 space-y-1">
+          <article class="project-card rounded-xl border border-slate-200 dark:border-slate-700 p-6 animate-fade-in-up dark:bg-slate-800 transition-colors" style="animation-delay: 0.1s">
+            <h3 class="font-semibold text-slate-900 dark:text-white">Cashier – Stop4Cup, Aley (Lebanon)</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Jun 2021 – Mar 2022</p>
+            <ul class="mt-3 list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
               <li>Managed daily cash operations and inventory</li>
               <li>Maintained accurate records and delivered customer service excellence</li>
             </ul>
           </article>
-          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.2s">
-            <h3 class="font-semibold text-slate-900">Operator – LibanJus, Beirut (Lebanon)</h3>
-            <p class="text-xs text-slate-500">Jun 2023 – Aug 2023</p>
-            <ul class="mt-3 list-disc list-inside text-slate-700 space-y-1">
+          <article class="project-card rounded-xl border border-slate-200 dark:border-slate-700 p-6 animate-fade-in-up dark:bg-slate-800 transition-colors" style="animation-delay: 0.2s">
+            <h3 class="font-semibold text-slate-900 dark:text-white">Operator – LibanJus, Beirut (Lebanon)</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Jun 2023 – Aug 2023</p>
+            <ul class="mt-3 list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
               <li>Improved efficiency by 15% through workflow optimization</li>
               <li>Resolved operational issues in a fast-paced environment</li>
             </ul>
@@ -205,41 +230,63 @@
     <!-- Skills -->
     <section id="skills" class="py-10">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-slate-900">Skills &amp; Qualifications</h2>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Skills &amp; Qualifications</h2>
         <div class="mt-4 flex flex-wrap gap-2">
-          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">Java</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">JavaScript</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">HTML</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">CSS</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">Bootstrap</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-sky-100 text-sky-800 rounded-full cursor-pointer">PHP</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full cursor-pointer">Docker</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full cursor-pointer">GitHub Actions</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-emerald-100 text-emerald-800 rounded-full cursor-pointer">AWS (EC2, S3, CloudFront)</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full cursor-pointer">Node.js</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-indigo-100 text-indigo-800 rounded-full cursor-pointer">Express</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-fuchsia-100 text-fuchsia-800 rounded-full cursor-pointer">REST APIs</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full cursor-pointer">SQL</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-amber-100 text-amber-800 rounded-full cursor-pointer">MongoDB</span>
-          <span class="skill-badge px-3 py-1 text-sm bg-rose-100 text-rose-800 rounded-full cursor-pointer">Jira</span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300 rounded-full cursor-pointer transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            Java
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300 rounded-full cursor-pointer transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm14.532 13.563c.205-.333.344-.757.344-1.217 0-1.21-.92-1.616-2.095-1.616-1.168 0-1.879.488-2.031 1.341h1.373c.061-.341.258-.517.659-.517.345 0 .618.156.618.528 0 .338-.255.48-.48.599l-.391.193c-.482.24-.768.544-.768 1.055v.231h1.362v-.12c0-.315.201-.476.471-.62l.391-.192c.328-.158.547-.384.547-.782zm-2.081 2.45c.448 0 .802-.34.802-.782 0-.44-.354-.783-.802-.783a.79.79 0 00-.792.783c0 .442.348.782.792.782zm-1.895-11.835v1.206c0 .59-.34 1.055-1.049 1.055-.572 0-.915-.36-1.011-.837H8.1c.148 1.405 1.134 2.046 2.385 2.046 1.393 0 2.42-.903 2.42-2.261V5.178h-1.349v3c0-.131-.132-.231-.264-.231h-1.049c-.569 0-.909.36-.909.837zm-.264 4.835c-.448 0-.802.34-.802.782 0 .44.354.783.802.783.447 0 .802-.34.802-.783s-.355-.782-.802-.782z"/></svg>
+            JavaScript
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-full cursor-pointer transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.23.23 0 0 0 .23-.23V8.73a.23.23 0 0 0-.23-.23h-2.119a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM13.983 8.01h2.119a.23.23 0 0 0 .23-.23V5.662a.23.23 0 0 0-.23-.23h-2.119a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM10.841 11.078h2.119a.23.23 0 0 0 .23-.23V8.73a.23.23 0 0 0-.23-.23h-2.119a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM10.841 14.146h2.119a.23.23 0 0 0 .23-.23v-2.119a.23.23 0 0 0-.23-.23h-2.119a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zm-.008-8.818h2.119a.23.23 0 0 0 .23-.23V2.978a.23.23 0 0 0-.23-.23h-2.119a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM7.691 14.146h2.119a.23.23 0 0 0 .23-.23v-2.119a.23.23 0 0 0-.23-.23H7.691a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM4.541 14.146h2.119a.23.23 0 0 0 .23-.23v-2.119a.23.23 0 0 0-.23-.23H4.541a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM1.391 14.146h2.119a.23.23 0 0 0 .23-.23v-2.119a.23.23 0 0 0-.23-.23H1.391a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM1.391 17.206h2.119a.23.23 0 0 0 .23-.23v-2.119a.23.23 0 0 0-.23-.23H1.391a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM1.391 11.078h2.119a.23.23 0 0 0 .23-.23V8.73a.23.23 0 0 0-.23-.23H1.391a.23.23 0 0 0-.23.23v2.119a.23.23 0 0 0 .23.23zM23.111 11.603c-.221-.498-.517-.961-.877-1.37a5.558 5.558 0 0 0-1.611-1.189 5.86 5.86 0 0 0-2.316-.481l-.012.016a5.868 5.868 0 0 0-3.322.9 5.617 5.617 0 0 0-1.928 2.37.28.28 0 0 0 .2.31c.219.049.444.075.674.075a5.578 5.578 0 0 0 3.197-1.001l.012-.008a5.503 5.503 0 0 0 1.954-2.527 5.753 5.753 0 0 1 2.219.492c.62.27 1.164.673 1.614 1.185.45.513.801 1.11 1.042 1.776.241.666.363 1.383.363 2.13 0 .747-.122 1.464-.363 2.13a5.525 5.525 0 0 1-1.042 1.776 5.761 5.761 0 0 1-1.614 1.185 5.85 5.85 0 0 1-2.219.493 5.83 5.83 0 0 1-2.219-.493 5.483 5.483 0 0 1-1.615-1.185l-.01-.012a6.3 6.3 0 0 1-.5-.544.17.17 0 0 0-.3.08v4.131c0 .13.11.23.23.23h19.539c.13 0 .23-.1.23-.23v-8.731c0-.747-.121-1.464-.362-2.13z"/></svg>
+            Docker
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-full cursor-pointer transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub Actions
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-full cursor-pointer transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.44,1.8c-.34-.41-.74-.82-1.2-.87s-.86,.26-1.12,.63c-.26,.37-.36,.82-.32,1.26s.25,.86,.59,1.14c1.1,1.14,2.2,2.29,3.31,3.43,.1,.09,.26,.18,.35,.1s.05-.23,.02-.34c-.54-1.78-1.09-3.57-1.62-5.35Zm-4.9,2.83c-.15-.49-.31-.97-.47-1.46-.07-.2,.12-.47,.31-.48s.32,.22,.4,.4l.43,1.3c.03,.07-.02,.17-.1,.18s-.14-.07-.17-.14l-.4-.8c0,0,0,0,0,0Zm10.56,9.52c-.75-.49-1.51-1.02-2.31-1.42s-1.65-.7-2.54-.78-1.78-.02-2.65,.19-1.7,.54-2.45,1.01-1.41,1.06-1.93,1.75-1,1.52-.96,2.4,1,1.5,1.83,1.82,1.7,.42,2.58,.32,1.74-.3,2.53-.74,1.48-1.02,2.02-1.71,.82-1.49,.82-2.36-.26-1.54-.94-2.09Zm-7.14,1.23c-.3,0-.6-.05-.88-.13-.57-.18-.94-.58-1.09-1.07s-.06-1.04,.27-1.43,.85-.62,1.42-.64,1.11,.16,1.52,.54,.61,.9,.41,1.44-.75,.96-1.4,1.26c-.08,.04-.17,.03-.25,.03Zm2.38-2.61c.14,.1,.26,.21,.37,.33s.2,.26,.26,.4c.16,.44,0,.9-.43,1.12s-.96,.12-1.3-.23-.42-.87-.16-1.31,.7-.74,1.27-.31Zm-.52,3.32c-.34,.41-.83,.57-1.38,.58s-1.11-.15-1.55-.5-.73-.85-.82-1.43-.02-1.16,.11-1.73,.35-1.11,.76-1.55,.94-.76,1.58-.88,1.26,.01,1.83,.21,1.07,.55,1.44,.99c.35,.41,.56,.89,.68,1.4s.09,1.04-.04,1.55-.41,.98-.82,1.35c-.08,.08-.09,.15-.05,.24,.2,.44,.4,.89,.58,1.34,.05,.12,0,.29-.11,.34s-.22-.03-.28-.13c-.31-.56-.62-1.11-.94-1.67v-.11c.01-.01,0,0,0,0Z"/></svg>
+            AWS (EC2, S3, CloudFront)
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300 rounded-full cursor-pointer transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 3.003h-.024c-.214 0-.427.012-.641.036-3.848.428-6.912 3.492-7.34 7.34-1.071 9.619 8.358 12.399 7.989 7.989.378 4.417 9.052 1.636 7.989-7.989-.428-3.848-3.492-6.912-7.34-7.34-.21-.024-.423-.036-.633-.036zm0 1.5c1.103 0 2 .897 2 2s-.897 2-2 2-2-.897-2-2 .897-2 2-2zm0 13c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5zm0-8.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5z"/></svg>
+            Node.js
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300 rounded-full cursor-pointer transition-colors">
+            Express
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/40 dark:text-fuchsia-300 rounded-full cursor-pointer transition-colors">
+            REST APIs
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 rounded-full cursor-pointer transition-colors">
+            SQL
+          </span>
+          <span class="skill-badge inline-flex items-center gap-2 px-3 py-1 text-sm bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 rounded-full cursor-pointer transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-11h2v6h-2zm0-4h2v2h-2z"/></svg>
+            MongoDB
+          </span>
         </div>
       </div>
     </section>
 
     <!-- Education -->
-    <section id="education" class="py-10 bg-white">
+    <section id="education" class="py-10 bg-white dark:bg-slate-900 transition-colors">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-slate-900">Education</h2>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Education</h2>
         <div class="mt-6 grid gap-6 md:grid-cols-2">
-          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.1s">
-            <h3 class="font-semibold text-slate-900">BSc in Computer Science</h3>
-            <p class="text-slate-700">Lebanese International University (LIU), Beirut, Lebanon</p>
-            <p class="text-xs text-slate-500">Expected Graduation: Fall 2025</p>
-            <p class="mt-2 text-sm text-slate-600"><span class="font-medium">Relevant Coursework:</span> Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Development</p>
+          <article class="project-card rounded-xl border border-slate-200 dark:border-slate-700 p-6 animate-fade-in-up dark:bg-slate-800 transition-colors" style="animation-delay: 0.1s">
+            <h3 class="font-semibold text-slate-900 dark:text-white">BSc in Computer Science</h3>
+            <p class="text-slate-700 dark:text-slate-300">Lebanese International University (LIU), Beirut, Lebanon</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Expected Graduation: Fall 2025</p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400"><span class="font-medium">Relevant Coursework:</span> Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Development</p>
           </article>
-          <article class="project-card rounded-xl border border-slate-200 p-6 animate-fade-in-up" style="animation-delay: 0.2s">
-            <h3 class="font-semibold text-slate-900">Lebanese Baccalaureate in Life Science</h3>
-            <p class="text-slate-700">Maroon Aboud Official School, Aley, Lebanon · 2020</p>
+          <article class="project-card rounded-xl border border-slate-200 dark:border-slate-700 p-6 animate-fade-in-up dark:bg-slate-800 transition-colors" style="animation-delay: 0.2s">
+            <h3 class="font-semibold text-slate-900 dark:text-white">Lebanese Baccalaureate in Life Science</h3>
+            <p class="text-slate-700 dark:text-slate-300">Maroon Aboud Official School, Aley, Lebanon · 2020</p>
           </article>
         </div>
       </div>
@@ -248,8 +295,8 @@
     <!-- Certificates -->
     <section id="certificates" class="py-10">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-slate-900">Certificates</h2>
-        <ul class="mt-4 grid gap-2 text-slate-700">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Certificates</h2>
+        <ul class="mt-4 grid gap-2 text-slate-700 dark:text-slate-300">
           <li>AWS Certified Cloud Practitioner – Amazon Web Services (2025–2028) · Credential ID: dbc01c0e5bd84db1b5457177f115f203</li>
           <li>Introduction to DevOps – IBM &amp; Coursera</li>
           <li>Framing Cloud Discussions for the C-Suite – LinkedIn Learning</li>
@@ -265,29 +312,29 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-10 bg-white">
+    <section id="contact" class="py-10 bg-white dark:bg-slate-900 transition-colors">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-slate-900">Contact</h2>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Contact</h2>
         <form id="contactForm" class="mt-6 grid gap-4 md:max-w-xl">
           <div>
-            <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
-            <input id="name" name="name" type="text" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" />
+            <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Name</label>
+            <input id="name" name="name" type="text" required class="mt-1 w-full rounded-md border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white shadow-sm focus:border-sky-500 focus:ring-sky-500" />
           </div>
           <div>
-            <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-            <input id="email" name="email" type="email" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500" />
+            <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Email</label>
+            <input id="email" name="email" type="email" required class="mt-1 w-full rounded-md border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white shadow-sm focus:border-sky-500 focus:ring-sky-500" />
           </div>
           <div>
-            <label for="inquiryType" class="block text-sm font-medium text-slate-700">Inquiry Type</label>
-            <select id="inquiryType" name="inquiryType" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500">
+            <label for="inquiryType" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Inquiry Type</label>
+            <select id="inquiryType" name="inquiryType" required class="mt-1 w-full rounded-md border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white shadow-sm focus:border-sky-500 focus:ring-sky-500">
               <option value="General">General</option>
               <option value="Opportunities">Opportunities</option>
               <option value="Collaboration">Collaboration</option>
             </select>
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium text-slate-700">Message</label>
-            <textarea id="message" name="message" rows="5" required class="mt-1 w-full rounded-md border-slate-300 shadow-sm focus:border-sky-500 focus:ring-sky-500"></textarea>
+            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300">Message</label>
+            <textarea id="message" name="message" rows="5" required class="mt-1 w-full rounded-md border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white shadow-sm focus:border-sky-500 focus:ring-sky-500"></textarea>
           </div>
           <button type="submit" class="inline-flex w-fit items-center rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-sky-700 transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-500">Send Message</button>
           <div id="form-status" role="status" aria-live="polite" class="text-sm"></div>
@@ -296,10 +343,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-200">
-      <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
+    <footer class="border-t border-slate-200 dark:border-slate-800 transition-colors">
+      <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-slate-600 dark:text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-2">
         <p>&copy; <span id="year"></span> Anas Mtaweh</p>
-        <div class="flex gap-4 text-sky-700">
+        <div class="flex gap-4 text-sky-700 dark:text-sky-400">
           <a href="http://www.linkedin.com/in/anas-mtaweh-a02806218" target="_blank" rel="noopener" class="hover:underline">LinkedIn</a>
           <a href="https://github.com/Anasmtaweh" target="_blank" rel="noopener" class="hover:underline">GitHub</a>
           <a href="/cv.pdf" download class="hover:underline">CV</a>
