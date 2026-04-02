@@ -42,7 +42,7 @@ app.get('/cv.pdf', (req, res) => {
     }
     res.set('Cache-Control', 'no-store'); // Always fetch latest from server
     // Force a friendly filename for download
-    res.download(latestCVPath, 'Anas_Mtaweh_CV.pdf');
+    res.download(latestCVPath, 'Anas_Mtaweh_AI_Software_Engineer.pdf');
 });
 
 // Convenience redirect from /cv to the downloadable file
@@ -103,7 +103,7 @@ app.post('/submit-contact-form', async (req, res) => {
     // if they offer better reliability or features for your needs.
     const transporter = nodemailer.createTransport({
         service: 'gmail', // Or your preferred email provider (e.g., 'hotmail', 'yahoo')
-                          // Ensure your provider allows SMTP access or check their API.
+        // Ensure your provider allows SMTP access or check their API.
         auth: {
             user: process.env.EMAIL_USER, // Your email address from .env
             pass: process.env.EMAIL_PASS  // Your email password or app-specific password from .env
